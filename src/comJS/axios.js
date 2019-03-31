@@ -1,6 +1,8 @@
 import axios from "axios";
 import store from "../store/index";
-import { Base64 } from "js-base64";
+import {
+  Base64
+} from "js-base64";
 
 let host = "";
 console.log(process.env);
@@ -8,7 +10,7 @@ console.log(process.env);
 if (process.env.NODE_ENV === "development") {
   host += "/api";
 } else {
-  host += "http://cloud.xiongmaozhanggui.com";
+  host += "http://";
 }
 
 const server = axios.create({
@@ -35,7 +37,9 @@ server.interceptors.response.use(
   response => {
     // 约定status 大于300 是请求成功
     if (response.status < 300) {
-      const { code } = response.data;
+      const {
+        code
+      } = response.data;
 
       // 约定code = 0; 为成功
       if (!code) {

@@ -10,10 +10,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.6.3",
+    "js-base64": "^2.5.1",
     "request": "^2.88.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "ua-parser-js": "^0.7.19",
     "useragent": "^2.3.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.1",

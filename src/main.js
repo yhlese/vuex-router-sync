@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App";
 import store from '@/store';
-import useragent from '@/comJS';
+import useragent from '@/comJS/useragent';
 import {
   sync
 } from 'vuex-router-sync';

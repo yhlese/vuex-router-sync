@@ -5,12 +5,11 @@ import {
 } from "js-base64";
 
 let host = "";
-console.log(process.env);
 // 跨域代理
 if (process.env.NODE_ENV === "development") {
   host += "/api";
 } else {
-  host += "http://";
+  host += "http://XXX.com";
 }
 
 const server = axios.create({
@@ -40,38 +39,41 @@ server.interceptors.response.use(
       const {
         code
       } = response.data;
-
       // 约定code = 0; 为成功
       if (!code) {
+
         return Promise.resolve(response);
       } else {
-        window.app.$message.error(response.data.msg || "网络请求失败");
         return Promise.reject(response);
+
       }
     }
     return Promise.reject(response);
   },
   error => {
-    const err = err.response;
-
     // 约定401 鉴权不通过
-    if (err && err.status === 401) {
-      window.app.$message.error("用户信息已失效，请重新登录");
-      store.commit("set_user_info");
+    if (error.response && error.response.status === 401) {
+      store.commit("SET_USER_INFO");
     }
     return Promise.reject(error);
   }
 );
 
 function yAxios(params) {
-  server(params).then(
-    res => {
-      params.sucFn && params.sucFn(res);
-    },
-    error => {
-      params.errorFn && params.errorFn(error);
-    }
-  );
+  return new Promise((resolve, reject) => {
+    server(params).then(
+      res => {
+        resolve(res.data);
+      },
+      error => {
+        reject(error);
+      }
+    );
+  })
+
+
 }
 
-export default yAxios;
+export {
+  yAxios
+};

@@ -22,3 +22,4 @@ new Vue({
   store,
   template: "<App/>"
 });
+window.app = app;

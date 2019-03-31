@@ -1,4 +1,6 @@
-import yAxios from '@/comJs/axios';
+import {
+  yAxios
+} from '@/comJs/axios';
 let prefix = '/prize_wheel';
 
 

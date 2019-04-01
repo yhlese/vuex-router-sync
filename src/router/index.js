@@ -78,6 +78,8 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log('to', to)
+  window.document.title = to.name;
   switch (to.path) {
     case RouterConfig.Main.path:
       next({

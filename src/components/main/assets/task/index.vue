@@ -31,13 +31,15 @@
     <!-- test: this.$set 添加多个属性 -->
     <el-button @click="setMore">添加多个属性</el-button> 
     <!-- test: v-slot -->
-    <v-slots>
-      <template v-slot:header="slotProps">
+    <v-slots >
+      <template v-slot:header="{slotInfo}">
         <div>
-          header-name：{{slotProps.slotInfo.name}}
+          header-name：{{slotInfo.name}}
         </div>
       </template>
-      <p>main</p>
+      <p>
+        <el-input v-model="info.val" v-formatNum:2="info.val"></el-input>
+      </p>
       <template v-slot:footer>
         <div>
           footer
@@ -64,7 +66,11 @@ export default {
       warnForKeyList:{
         a:'a',
         b:'b'
+      },
+      info:{
+        val:''
       }
+      
     };
   },
   methods: {

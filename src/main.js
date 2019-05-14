@@ -8,9 +8,11 @@ import {
 import vueRouter from './router/index';
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+import "@/directive"
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 sync(store, vueRouter);
+
 /* eslint-disable no-new */
 
 new Vue({

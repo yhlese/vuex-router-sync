@@ -1,31 +1,42 @@
 import Vue from 'vue';
+import {
+  formatNum,
+  formatTel
+} from '@/comJS/utils.js';
 var _ = require('lodash');
 
+/**
+ * @description 自定义 限制输入框 只能输入数字 且 限制后几位 
+ * @param 0 1 2 （默认保留两位）
+ * @example  <el-input v-model="ruleForm.fee" v-formatNum:2="ruleForm.fee"></el-input>
+ * 
+ */
 Vue.directive('formatNum', {
-  update(el,{value,expression,arg},{context}) {
-    let keys =expression.split('.');
-    _.set(context,keys,formatNum(value,arg))
+  update(el, {
+    value,
+    expression,
+    arg
+  }, {
+    context
+  }) {
+    let keys = expression.split('.');
+    _.set(context, keys, formatNum(value, arg))
   }
 });
 
-// 输入框校验
-function formatNum(str, float = 2) {
-    str = str.toString();
-    if (str.length > 1 && str.charAt(0) === '0' && str.charAt(1) !== '.') {
-      return '';
-    }
-    const i = str.indexOf('.');
-    let arr;
-  
-    if (i !== -1) {
-      str.replace(/./g, '$');
-      str.replace(/./g, '');
-      str.replace(/$/g, '.');
-      arr = str.split('.');
-      str = arr[0];
-    }
-    const reg = /[^0-9]*/g;
-    const newStr = str.replace(reg, '');
-    const newStrFlot = arr && arr[1].replace(reg, '');
-    return float !== 0 && i !== -1 ? newStr + '.' + newStrFlot.slice(0, float) : newStr;
+/**
+ * @description 自定义 限制输入框 只能输入数字和短横线 
+ * @example  <el-input v-model="customQuery.tel" v-formatTel="customQuery.tel"></el-input>
+ * 
+ */
+Vue.directive('formatTel', {
+  update(el, {
+    value,
+    expression
+  }, {
+    context
+  }) {
+    let keys = expression.split('.');
+    _.set(context, keys, formatTel(value))
   }
+});

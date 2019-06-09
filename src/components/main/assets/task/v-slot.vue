@@ -13,19 +13,23 @@
     <footer>
       <slot name="footer"></slot>
     </footer>
-    <!-- props -->
+    <!-- props 父组件 -->
     <chidrenProp placeholder="Enter your username"
-                 coo="这是父组件给孙子组件"
-                 @fromGrandson="fromGrandson"></chidrenProp>
+                 name="姓名"></chidrenProp>
+    <!-- 父组件：父组件和孙子组件的数据传递 -->
+    <attrsListeners coo="这是父组件给孙子组件"
+                    @fromGrandson="fromGrandson"></attrsListeners>
   </div>
 </template>
 <script>
 import chidrenProp from "@/components/main/assets/task/props.vue";
+import attrsListeners from "@/components/main/assets/task/attrsAndListeners.vue";
 
 export default {
   props: ["title"],
   components: {
-    chidrenProp
+    chidrenProp,
+    attrsListeners
   },
   inheritAttrs: false, //设置 inheritAttrs 为false 可以关闭自动挂载
   data() {

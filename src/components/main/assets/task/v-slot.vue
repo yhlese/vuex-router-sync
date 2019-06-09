@@ -13,10 +13,10 @@
     <footer>
       <slot name="footer"></slot>
     </footer>
-    <!-- props 父组件 -->
+    <!-- 5.props 父组件 -->
     <chidrenProp placeholder="Enter your username"
                  name="姓名"></chidrenProp>
-    <!-- 父组件：父组件和孙子组件的数据传递 -->
+    <!-- 6.父组件：父组件和孙子组件的数据传递 -->
     <attrsListeners coo="这是父组件给孙子组件"
                     @fromGrandson="fromGrandson"></attrsListeners>
   </div>

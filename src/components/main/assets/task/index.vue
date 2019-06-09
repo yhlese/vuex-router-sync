@@ -9,7 +9,7 @@
                v-if="inputEvent === 'input'">切换事件为Input</el-button>
     <el-button @click="()=>{ this.inputEvent = 'input';}"
                v-else>切换事件为Focus</el-button>
-
+    <!-- 修饰符 -->
     <div id="obj1"
          @click.self="doc">
       obj1
@@ -32,7 +32,7 @@
     <!-- test: this.$set 添加多个属性 -->
     <el-button @click="setMore">添加多个属性</el-button>
     <!-- test: v-slot -->
-    <!-- 在子组件上没有通过props声明的属性，传给子组件时候默认自动挂载到组建的根元素上，通过在子组件上加上 inheritAttrs:false 防止挂载 -->
+    <!-- test：在子组件上没有通过props声明的属性，传给子组件时候默认自动挂载到组建的根元素上，通过在子组件上加上 inheritAttrs:false 防止挂载 -->
     <v-slots title="inherit"
              msg="测试inherit">
       <template v-slot:header="{slotInfo}">

@@ -3,7 +3,7 @@ import {
   formatNum,
   formatTel,
   formatNotInputTxt
-} from '@/comJS/utils';
+} from '@/utils/format.ts';
 var _ = require('lodash');
 
 /**
@@ -38,16 +38,16 @@ Vue.directive('formatTel', {
     context
   }) {
     let keys = expression.split('.');
-    _.set(context, keys, formatTel(value))
+   _.set(context, keys, formatTel(value))
   }
 });
 
 /**
  * @description 自定义 限制输入框 不能输入中文 
- * @example  <el-input v-model="customQuery.tel" v-formatNotInputTxt="customQuery.tel"></el-input>
+ * @example  <el-input v-model="customQuery.tel" v-formatTel="customQuery.tel"></el-input>
  * 
  */
-Vue.directive('formatNotInputTxt', {
+Vue.directive('formatNotTxt', {
   update(el, {
     value,
     expression
@@ -55,6 +55,6 @@ Vue.directive('formatNotInputTxt', {
     context
   }) {
     let keys = expression.split('.');
-    _.set(context, keys, formatNotInputTxt(value))
+    value && _.set(context, keys, formatNotInputTxt(value))
   }
 })

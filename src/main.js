@@ -1,28 +1,29 @@
-import Vue from "vue";
-import App from "./App";
+import Vue from 'vue';
+import App from './App';
 import store from '@/store';
 import useragent from '@/comJS/useragent';
 import {
   sync
 } from 'vuex-router-sync';
 import vueRouter from './router/index';
-import ElementUI from "element-ui";
+import ElementUI from 'element-ui';
 // import "element-ui/lib/theme-chalk/index.css";
-import "@/directive"
+// import "@/directive"
 Vue.config.productionTip = false;
-import './element-variables.scss'
+import './element-variables.scss';
+import ElInputValidate from 'el-input-validate'
+ElInputValidate(Vue)
 Vue.use(ElementUI);
 sync(store, vueRouter);
-
 /* eslint-disable no-new */
 
 new Vue({
-  el: "#app",
+  el: '#app',
   router: vueRouter,
   components: {
-    App
+    App,
   },
   store,
-  template: "<App/>"
+  template: '<App/>',
 });
 window.app = app;

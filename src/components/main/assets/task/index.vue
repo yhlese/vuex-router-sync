@@ -1,10 +1,11 @@
 <template>
   <div class="task">
     <p>动态事件名:</p>
-    <el-input v-model="value"
-              @[inputEvent]="doSomething"
-              style="width:100px"
-              placeholder="请输入内容"></el-input>
+    <input v-model="value"
+           @[inputEvent]="doSomething"
+           style="width:100px"
+           placeholder="请输入内容"
+           v-formatNum:0="value" />
     <el-button @click="()=>{ this.inputEvent = 'focus'}"
                v-if="inputEvent === 'input'">切换事件为Input</el-button>
     <el-button @click="()=>{ this.inputEvent = 'input';}"
@@ -56,11 +57,11 @@
   </div>
 </template>
 <script>
-import { getList } from "@/api/task/index.js";
-process.env.NODE_ENV === "development" &&
-  require("../../../../mockJs/task/index.js");
-import VSlots from "@/components/main/assets/task/v-slot.vue";
-import Functional from "@/components/main/assets/task/functional/index.vue";
+import { getList } from '@/api/task/index.js';
+process.env.NODE_ENV === 'development' &&
+  require('../../../../mockJs/task/index.js');
+import VSlots from '@/components/main/assets/task/v-slot.vue';
+import Functional from '@/components/main/assets/task/functional/index.vue';
 export default {
   components: {
     VSlots,
@@ -68,15 +69,15 @@ export default {
   },
   data() {
     return {
-      value: "",
+      value: '',
       // 动态事件名
-      inputEvent: "input",
+      inputEvent: 'input',
       warnForKeyList: {
-        a: "a",
-        b: "b"
+        a: 'a',
+        b: 'b'
       },
       info: {
-        val: ""
+        val: ''
       }
     };
   },
@@ -87,15 +88,15 @@ export default {
     },
     // input执行事件
     doSomething() {
-      console.log("val", this.value);
+      console.log('val', this.value);
     },
     // mock数据获取
     async fetchData() {
       try {
         let data = await getList();
-        console.log("data", data);
+        console.log('data', data);
       } catch (error) {
-        console.log("error", error);
+        console.log('error', error);
       }
     },
     // 给 data 添加新的值
@@ -103,10 +104,10 @@ export default {
       // 添加多个
       this.warnForKeyList = Object.assign({}, this.warnForKeyList, {
         age: 12,
-        sex: "男"
+        sex: '男'
       });
       // 只添加一个属性 this.warnForKeyList.name = 'Liriye' 添加不成功的
-      this.$set(this.warnForKeyList, "name", "Liriye");
+      this.$set(this.warnForKeyList, 'name', 'Liriye');
     }
   },
   mounted() {

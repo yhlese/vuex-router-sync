@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dayjs": "^1.8.14",
+    "el-input-validate": "^0.1.8",
     "element-ui": "^2.6.3",
     "js-base64": "^2.5.1",
     "lodash": "^4.17.11",
@@ -26,6 +27,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.1.0",
     "vuex-router-sync": "^5.0.0",
+    "xjx-directives": "^1.0.0",
     "yamlparser": "^0.0.2"
   },
   "devDependencies": {

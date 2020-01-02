@@ -277,7 +277,7 @@ export default {
           return console.warn("apiFn 为空");
         }
 
-        const { totalCount, data, payload, pages } = await this.apiFn(params);
+        const { totalCount, data, payload, pages, totalPage } = await this.apiFn(params);
         let res = payload || data || [];
         if (this.filterOut) {
           this.tableData = this.filterOut(res);
@@ -285,6 +285,19 @@ export default {
           this.tableData = res;
         }
         this.totalNum = totalCount || (res.pages && res.pages.total) || this.tableData.length || 0;
+        /**
+         * bug场景：用户先查询出所有数据后发现页面共10页数据，然后去选择某个查询条件并选择第10页数据，其实该查询条件下没有10页数据可能只有2页
+         *          但是当前显示的就是 page=10的该条件下的数据所以页面为没有数据。就需要手动给他把page设为第一页并重新请求正常的数据
+         * 解决：总页数等于0 ，把page置为1 ，重新请求
+         */
+        if (
+          ((totalPage !== void 0 && this.pager.currentPage > totalPage) || !this.totalNum) &&
+          this.pager.currentPage !== 1
+        ) {
+          this.pager.currentPage = 1;
+          this.getList();
+          return;
+        }
         this.$emit("getTableData", res);
         this.$emit("getListDone");
         this.$emit("update:totalCount", totalCount || this.tableData.length || 0);

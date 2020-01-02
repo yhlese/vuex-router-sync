@@ -1,4 +1,43 @@
 import dayjs from "dayjs";
+export const pickerOptions = {
+  shortcuts: [{
+      text: "本月",
+      onClick(picker) {
+        picker.$emit("pick", currentMonth());
+      }
+    },
+    {
+      text: "上月",
+      onClick(picker) {
+        picker.$emit("pick", lastMonth());
+      }
+    },
+    {
+      text: "本季度",
+      onClick(picker) {
+        picker.$emit("pick", currentQuarter());
+      }
+    },
+    {
+      text: "上季度",
+      onClick(picker) {
+        picker.$emit("pick", lastQuarter());
+      }
+    },
+    {
+      text: "今年",
+      onClick(picker) {
+        picker.$emit("pick", currentYear());
+      }
+    },
+    {
+      text: "去年",
+      onClick(picker) {
+        picker.$emit("pick", lastYear());
+      }
+    }
+  ]
+}
 export function currentMonth() {
   const start = new Date()
   const end = new Date()

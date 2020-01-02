@@ -1,28 +1,24 @@
 <template>
   <div>
-    <el-form>
-      <el-form-item>
-        <el-date-picker ref="dateRangeRef"
-                        v-model="_daterange"
-                        :clearable="false"
-                        type="daterange"
-                        value-format="timestamp"
-                        start-placeholder="开始日期"
-                        end-placeholder="结束日期"
-                        :picker-options="pickerOptions" />
-      </el-form-item>
-    </el-form>
+    <DpDatePicker @change="valueChange"></DpDatePicker>
   </div>
 </template>
+
 <script>
-import { pickerOptions } from '@/comJS/date-selection.js';
+import DpDatePicker from '@/components/common/dp-date-picker/index.vue';
 export default {
+  components: {
+    DpDatePicker
+  },
   data() {
-    return {
-      ROUTER: RouterConfig.Assets,
-      _daterange: '',
-      pickerOptions: pickerOptions
-    };
+    return {};
+  },
+  methods: {
+    valueChange(val) {
+      console.log(val);
+    }
   }
 };
 </script>
+<style lang='scss' scoped>
+</style>

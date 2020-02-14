@@ -1,6 +1,9 @@
 <template>
   <div class="task">
     <p>动态事件名:</p>
+    <!-- video test -->
+    <!-- <VideoPlay></VideoPlay> -->
+    <PhotoPlay></PhotoPlay>
     <input v-model="value"
            @[inputEvent]="doSomething"
            style="width:100px"
@@ -54,6 +57,7 @@
     </v-slots>
     <!-- 7.test：函数式组件 -->
     <functional />
+
   </div>
 </template>
 <script>
@@ -62,10 +66,14 @@ process.env.NODE_ENV === 'development' &&
   require('../../../../mockJs/task/index.js');
 import VSlots from '@/components/main/assets/task/v-slot.vue';
 import Functional from '@/components/main/assets/task/functional/index.vue';
+import VideoPlay from './component/videoPlay.vue';
+import PhotoPlay from './component/photoPlay.vue';
 export default {
   components: {
     VSlots,
-    Functional
+    Functional,
+    VideoPlay,
+    PhotoPlay
   },
   data() {
     return {

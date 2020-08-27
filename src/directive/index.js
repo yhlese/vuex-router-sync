@@ -3,7 +3,7 @@ import {
   formatNum,
   formatTel,
   formatNotInputTxt
-} from '@/utils/format.ts';
+} from '@/utils/format.js';
 var _ = require('lodash');
 
 /**

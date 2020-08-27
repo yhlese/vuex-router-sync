@@ -1,5 +1,5 @@
 
-function _regFormat(str:string,reg:any){
+function _regFormat(str,reg){
   if (!str) return;
   str = str.toString();
   if (str.length < 0 ) {
@@ -15,12 +15,12 @@ function _regFormat(str:string,reg:any){
     str = arr[0];
   }
   const newStr = str.replace(reg, '');
-  const newStrFlot:any = arr && arr[1].replace(reg, '');
+  const newStrFlot = arr && arr[1].replace(reg, '');
   return i !== -1 ? newStr + newStrFlot.slice(0, 0) : newStr;
 }
 
 // 输入框校验
-function formatNum(str:string, float:number|undefined|string = 2) {
+function formatNum(str, float = 2) {
   if (!str) return;
   str = str.toString();
   if (str.length > 1 && str.charAt(0) === '0' && str.charAt(1) !== '.') {
@@ -39,15 +39,15 @@ function formatNum(str:string, float:number|undefined|string = 2) {
   const reg = /[^0-9]*/g;
   let newStr = str.replace(reg, '');
   newStr = float === 0 ?  str.slice(0, str.length) : newStr; 
-  const newStrFlot:any = arr && arr[1].replace(reg, '');
+  const newStrFlot = arr && arr[1].replace(reg, '');
   return float !== 0 && i !== -1 ? newStr + '.' + newStrFlot.slice(0, float) :newStr;
 }
 
-function formatTel(str:string) {
+function formatTel(str) {
   return _regFormat(str,/[^0-9-]*/g)
 }
 
-function formatNotInputTxt(str:string) {
+function formatNotInputTxt(str) {
  return _regFormat(str,/[\u4E00-\u9FA5]/g)
 }
 

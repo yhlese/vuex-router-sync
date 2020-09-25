@@ -8,7 +8,7 @@ import {
 import vueRouter from './router/index';
 import ElementUI from 'element-ui';
 // import "element-ui/lib/theme-chalk/index.css";
-import "@/directive"
+// import "@/directive"
 Vue.config.productionTip = false;
 import './element-variables.scss';
 // import ElInputValidate from 'el-input-validate'

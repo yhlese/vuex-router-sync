@@ -1,14 +1,17 @@
 <template>
   <div>
     <DpDatePicker @change="valueChange"></DpDatePicker>
+    <CanvasComponent></CanvasComponent>
   </div>
 </template>
 
 <script>
 import DpDatePicker from '@/components/common/dp-date-picker/index.vue';
+import CanvasComponent from './canvas'
 export default {
   components: {
-    DpDatePicker
+    DpDatePicker,
+    CanvasComponent
   },
   data() {
     return {};

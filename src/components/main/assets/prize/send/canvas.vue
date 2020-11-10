@@ -1,51 +1,71 @@
+
 <template>
 <div>
-  <div >
-      <img :src="item" v-for="(item,index) of imgList" :key="index">
+  <div ref="body">
+      <img :src="item" v-for="(item,index) of imgList" :key="index" crossorigin="anonymous">
       <el-button @click="downLoad">下载</el-button>
+      <div id="scream">sdfasfsfasf</div>
     </div>
-    <canvas id="myCanvas"></canvas>
-    <div id="scream">sdfasfsfasf</div>
 </div>
   
 </template>
 
 <script>
+import html2canvas from 'html2canvas';
 export default {
   data(){
     return{
       imgList:[
         'https://dmp-xuhui.oss-cn-hangzhou.aliyuncs.com/cws01/2020/09/202009214fs6eosp1600688243460.png',
-        'http://gt-wxb.oss-cn-hangzhou.aliyuncs.com/project%2F5d31e9065eeaec3850235522%2Focr%2Ffile%2Fwechat%2Fqrcode_1600939125893.jpg'
+        'http://gt-wxb.oss-cn-hangzhou.aliyuncs.com/project%2F5d31e9065eeaec3850235522%2Focr%2Ffile%2Fwechat%2Fqrcode_1600939125893.jpg',
+        require('./../../../../../assets/logo.png')
       ]
     }
   },
   methods:{
+    getBase64Image(img) {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+      var dataURL = canvas.toDataURL("image/" + ext);
+      return dataURL;
+    },
     downLoad(){
-      // let _imgRef = this.$refs.imgRef
-      // let _width = _imgRef.offsetWidth
-      // let _height = _imgRef.offsetHeight
-      // let canvas = document.getElementById("myCanvas");
-      // let cxt = canvas.getContext("2d");
-      // console.log(cxt,canvas,_imgRef)
-      // cxt.drawImage(_imgRef,0,0,_width,_height)
+      
+      const _body = this.$refs.body
+      const width = _body.offsetWidth
+      const height = _body.offsetHeight
+      const canvasEl = document.createElement('canvas')
+      canvasEl.width = width 
+      canvasEl.height = height 
+      const ctx = canvasEl.getContext('2d')
 
-      // let a = document.createElement('a')
-      // document.body.append(a)
-      // document.body.toDataURL('image/png')
-      // a.download = '下载'
-      // a.click()
+      const opts = {
+        scale:1,
+        canvas: canvasEl,
+        logging: true, 
+        width,
+        height,
+        // 开启跨域配置
+        useCORS: true,
+      }
 
-      var c = document.getElementById("myCanvas");
-      var ctx = c.getContext("2d");
-      var img = document.getElementById("scream");
+      html2canvas(_body,opts).then(canvas =>{
+        console.log(canvas)
+        let url = canvas.toDataURL('image/png')
+        let a = document.createElement('a')
+        a.download = 'ocr.png';
+        a.href = url
+        a.click();
+      })
 
-        ctx.drawImage(img,0,0,10,10);
     }
   },
-  mounted(){
-    this.downLoad()
-  }
+ 
 }
 </script>
 

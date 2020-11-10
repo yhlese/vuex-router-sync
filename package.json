@@ -16,7 +16,7 @@
     "js-base64": "^2.5.1",
     "lodash": "^4.17.11",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "request": "^2.88.0",
     "sass-loader": "^7.1.0",
     "screenfull": "^5.0.2",

@@ -3,7 +3,7 @@
     <el-button type="primary"
                size="medium"
                @click="addPrice"><i class="el-icon-plus el-icon--left"></i>新增</el-button>
-    <Magnifier></Magnifier>
+    <!-- <Magnifier></Magnifier> -->
   </div>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     // 添加奖品
-    addPrice() {
+    addPrice () {
       this.$router.push(RouterConfig.Assets.PrizeLibraryAdd.path);
     }
   }

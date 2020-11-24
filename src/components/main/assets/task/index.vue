@@ -1,6 +1,7 @@
 <template>
   <div class="task">
     <p>动态事件名:</p>
+    <el-button @click="openFullScreen">全屏</el-button>
     <!-- video test -->
     <!-- <VideoPlay></VideoPlay> -->
     <PhotoPlay></PhotoPlay>
@@ -68,6 +69,9 @@ import VSlots from '@/components/main/assets/task/v-slot.vue';
 import Functional from '@/components/main/assets/task/functional/index.vue';
 import VideoPlay from './component/videoPlay.vue';
 import PhotoPlay from './component/photoPlay.vue';
+import screenfull from 'screenfull';
+
+
 export default {
   components: {
     VSlots,
@@ -90,6 +94,9 @@ export default {
     };
   },
   methods: {
+    openFullScreen(){
+      screenfull.toggle()
+    },
     doc() {
       this.id = event.currentTarget.id;
       console.log(this.id);

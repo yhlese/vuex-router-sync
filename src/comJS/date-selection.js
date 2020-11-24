@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-08-27 14:34:12
+ * @LastEditTime: 2020-11-12 16:37:04
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vuex-router-sync\src\comJS\date-selection.js
+ */
 import dayjs from "dayjs";
 export const pickerOptions = {
   shortcuts: [{
@@ -38,6 +46,17 @@ export const pickerOptions = {
     }
   ]
 }
+
+// 本周
+export function currentWeek() {
+  const now = new Date(); // 当前日期
+  const nowDayOfWeek = now.getDay(); // 今天本周的第几天
+  const nowDay = now.getDate(); // 当前日
+  const nowMonth = now.getMonth(); // 当前月
+  const day = nowDayOfWeek || 7
+  return [dayjs(new Date(now.getFullYear(), nowMonth, nowDay + 1 - day)).format('YYYY-MM-DD'), dayjs(new Date(now.getFullYear(), nowMonth, nowDay + 7 - day)).format('YYYY-MM-DD')]
+}
+
 export function currentMonth() {
   const start = new Date()
   const end = new Date()

@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dayjs": "^1.8.14",
+    "echarts": "^4.9.0",
     "element-ui": "^2.6.3",
     "js-base64": "^2.5.1",
     "lodash": "^4.17.11",

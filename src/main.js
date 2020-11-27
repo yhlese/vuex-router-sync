@@ -15,8 +15,9 @@ import './element-variables.scss';
 // ElInputValidate(Vue)
 Vue.use(ElementUI);
 sync(store, vueRouter);
-/* eslint-disable no-new */
 
+
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router: vueRouter,

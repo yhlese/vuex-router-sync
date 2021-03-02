@@ -12,10 +12,11 @@ import { mapConfig } from './config/index'
 export default {
   methods: {
     initEcharts () {
+      console.log('china', china)
       const mapRef = this.$refs.map
       const mapChart = echarts.init(mapRef)
       echarts.registerMap('china', china)
-      p      mapChart.setOption(mapConfig, true);
+      mapChart.setOption(mapConfig, true);
 
     }
   },
